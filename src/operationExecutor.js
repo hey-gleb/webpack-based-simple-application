@@ -36,7 +36,9 @@ class OperationExecutor {
         /**
          * Place your code here
          */
-        let copyObject = Object.assign({}, arg);
+        let copyObject = jQuery.extend(true, {}, arg.obj1);
+        copyObject.firstName = "Zultinbek";
+        console.log(arg.obj1);
         return copyObject;
     }
 
@@ -47,11 +49,10 @@ class OperationExecutor {
      * @returns object that contains source objects and their combined and modified clone
      */
     secondTaskExecute(arg) {
-        /**
-         * Place your code here
-         */
-        let combine = Object.assign(arg.obj1, arg.obj2);
-        return combine;
+        let result = {...arg.obj1, ...arg.obj2};
+        result.a = 39;
+        console.log(arg);
+        return result;
     }
 
     /**
@@ -99,8 +100,9 @@ class OperationExecutor {
         /**
          * Place your code here
          */
-        document.getElementsByClassName(arg.className)[0].style.background = arg.color;
-        return `${arg.className} ${arg.color}`;
+        let element = document.getElementsByClassName(arg.className)[0];
+        element.style.background = arg.color;
+        return `${element.className} ${element.style.background}`;
     }
 
     /**
@@ -113,8 +115,9 @@ class OperationExecutor {
         /**
          * Place your code here
          */
-        let filtered = Object.assign({},arg.obj1.hostNames);
-        return filtered;
+        return arg.hostNames.filter(arrayHostName => {
+            return arrayHostName === document.location.hostname;
+        });
     }
 
     /**
@@ -127,9 +130,12 @@ class OperationExecutor {
         /**
          * Place your code here
          */
-        Object.keys(arg.obj1);
-        Object.values(arg.obj1);
-        return null;
+        let object = {};
+        for (let key in arg) {
+            let value = arg[key];
+            object[value] = key;
+        }
+        return object;
     }
 
     /**
@@ -142,9 +148,16 @@ class OperationExecutor {
         /**
          * Place your code here
          */
-        let concatArray = [...arg.obj1.arr1, ...arg.obj1.arr2];
-
-        return null;
+        let object = {};
+        let concatArray = [...arg.arr1, ...arg.arr2];
+        for (var i = 0; i <= concatArray.length; i += 2) {
+            if (concatArray[i + 1] !== undefined) {
+                object[concatArray[i]] = concatArray[i + 1];
+            } else {
+                object[concatArray[i]] = null;
+            }
+        }
+        return object;
     }
 
     /**
@@ -157,8 +170,11 @@ class OperationExecutor {
         /**
          * Place your code here
          */
-
-        return null;
+        let object = {};
+        arg.users.forEach(user => {
+            object[user.id] = user;
+        });
+        return object;
     }
 
     /**
@@ -171,7 +187,12 @@ class OperationExecutor {
         /**
          * Place your code here
          */
-        return null;
+        let childArray = document.getElementsByClassName(arg.className)[0].children;
+        console.log(childArray);
+        for (var i = 0; i < childArray.length; i++) {
+            arg.childrenInfo.push(`${childArray[i].className} : ${childArray[i].tagName}`);
+        }
+        return arg.childrenInfo;
     }
 }
 
