@@ -65,8 +65,10 @@ class OperationExecutor {
         /**
          * Place your code here
          */
-        let copyObject = Object.assign({}, arg);
-        copyObject.obj1.relatives.forEach(relation => relation.gender = "");
+        // let copyObject = Object.assign({}, arg);
+        // copyObject.obj1.relatives.forEach(relation => {
+        //     relation.lastName === "Ivanova" ? relation.gender = "female" : relation.gender = "male";
+        // });
         return copyObject;
     }
 
@@ -100,8 +102,8 @@ class OperationExecutor {
         /**
          * Place your code here
          */
-        let element = document.getElementsByClassName(arg.className)[0];
-        element.style.background = arg.color;
+        // let element = document.getElementsByClassName(arg.className)[0];
+        // element.style.background = arg.color;
         return `${element.className} ${element.style.background}`;
     }
 
@@ -187,11 +189,11 @@ class OperationExecutor {
         /**
          * Place your code here
          */
-        let childArray = document.getElementsByClassName(arg.className)[0].children;
-        console.log(childArray);
-        for (var i = 0; i < childArray.length; i++) {
-            arg.childrenInfo.push(`${childArray[i].className} : ${childArray[i].tagName}`);
-        }
+        // let childArray = document.getElementsByClassName(arg.className)[0].children;
+        // console.log(childArray);
+        // for (var i = 0; i < childArray.length; i++) {
+        //     arg.childrenInfo.push(`${childArray[i].className} : ${childArray[i].tagName}`);
+        // }
         return arg.childrenInfo;
     }
 }
