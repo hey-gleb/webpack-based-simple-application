@@ -85,7 +85,7 @@ class OperationExecutor {
         let greetingsArray = [];
         arg.obj1.relatives.forEach(relation => {
                 if (relation.gender === "female") {
-                    greetingsArray.push(`Greetings, ${relation.firstName}!`);
+                    greetingsArray.push(`Greetings, ${relation.firstName} ${relation.lastName}!`);
                 }
             }
         );
